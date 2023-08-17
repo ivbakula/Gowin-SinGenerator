@@ -4,8 +4,10 @@
 //GOWIN Version: 1.9.8.11 Education
 //Part Number: GW1NZ-LV1QN48C6/I5
 //Device: GW1NZ-1
-//Created Time: Wed 08 16 22:11:13 2023
+//Created Time: Thu 08 17 16:59:52 2023
 
+IO_LOC "VSYNC" 46;
+IO_PORT "VSYNC" IO_TYPE=LVCMOS33 PULL_MODE=UP DRIVE=8 BANK_VCCIO=3.3;
 IO_LOC "sin_data[11]" 11;
 IO_PORT "sin_data[11]" IO_TYPE=LVCMOS33 PULL_MODE=UP DRIVE=8 BANK_VCCIO=3.3;
 IO_LOC "sin_data[10]" 9;

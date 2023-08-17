@@ -2,7 +2,8 @@ module Top
 (
     input CLK,
     output PCLK,
-    output [11:0] sin_data
+    output [11:0] sin_data,
+    output VSYNC
 );
 
 wire pll_clkout;
@@ -24,7 +25,8 @@ Gowin_rPLL pll
 SIN_Lut sin
 (
     .clkin(pll_clkout),
-    .sin_x(sin_data)
+    .sin_x(sin_data),
+    .vsync(VSYNC)
 );
 
 endmodule

@@ -1,18 +1,24 @@
 module SIN_Lut
 (
     input clkin,
-    output [11:0] sin_x
+    output [11:0] sin_x,
+    output vsync
 );
 
 
 reg [3:0] counter;
 reg [11:0] buffer;
+reg vsync_buffer = 1'b1;
 
 assign sin_x = buffer;
+assign vsync = vsync_buffer;
 
 always @ (negedge clkin) begin
     case (counter)
-      0: buffer <= 12'hffff;
+      0: begin
+            vsync_buffer <= 1'b0;
+            buffer <= 12'hffff;
+         end
       1: buffer <= 12'hfcbe;
       2: buffer <= 12'hfa0d;
       3: buffer <= 12'hf864;
@@ -30,7 +36,10 @@ always @ (negedge clkin) begin
       12: buffer <= 12'h0799;
       13: buffer <= 12'h05f0;
       14: buffer <= 12'h033f;
-      15: buffer <= 12'hffff;
+      15: begin
+            vsync_buffer <= 1'b1;
+            buffer <= 12'hffff;
+          end
     endcase      
 
     counter <= counter + 1;
